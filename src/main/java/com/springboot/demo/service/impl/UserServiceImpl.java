@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void saveUser(User user) {
         userDAO.saveUser(user);
-        int i = 1 / 0;
+        //int i = 1 / 0;
     }
 
     public void updateUser(User user) {
