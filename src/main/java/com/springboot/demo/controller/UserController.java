@@ -2,6 +2,9 @@ package com.springboot.demo.controller;
 
 import com.springboot.demo.domain.User;
 import com.springboot.demo.service.UserService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -16,12 +19,15 @@ import java.util.List;
 @RestController
 public class UserController {
 
+    private Log log = LogFactory.getLog(UserController.class);
+
     @Autowired
     private UserService userService;
  
     // GET请求代表着是查询数据
     @GetMapping(value="/")
     public List<User> listUsers() {
+        log.debug("查询用户");
         return userService.listUsers();
     } 
     
