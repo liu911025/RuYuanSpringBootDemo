@@ -24,16 +24,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void saveUser(User user) {
-        userDAO.saveUser(user);
+    public Long saveUser(User user) {
         //int i = 1 / 0;
+        return userDAO.saveUser(user);
     }
 
-    public void updateUser(User user) {
-        userDAO.updateUser(user);
+    public Boolean updateUser(User user) {
+        return userDAO.updateUser(user);
     }
 
-    public void removeUser(Long userId) {
-        userDAO.removeUser(userId);
+    public Boolean removeUser(Long userId) {
+        return userDAO.removeUser(userId);
     }
 }

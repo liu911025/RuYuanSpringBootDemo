@@ -22,15 +22,18 @@ public class UserDAOImpl implements UserDAO {
         return userMapper.getUserById(userId);
       }
 
-      public void saveUser(User user) {
+      public Long saveUser(User user) {
         userMapper.saveUser(user);
+        return user.getId();
       }
         
-      public void updateUser(User user) {
+      public Boolean updateUser(User user) {
         userMapper.updateUser(user);
+        return true;
       }
         
-      public void removeUser(Long userId) {
+      public Boolean removeUser(Long userId) {
         userMapper.removeUser(userId);
+        return true;
       }
 }

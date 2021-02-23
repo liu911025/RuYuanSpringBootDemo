@@ -10,7 +10,7 @@ public interface UserMapper {
     @Select("SELECT * FROM user")
     List<User> listUsers();
         
-    @Select("SELECT * FROM user WHERE user_id = #{userId}")
+    @Select("SELECT * FROM user WHERE id = #{userId}")
     @Results({
              @Result(property = "id", column = "id", id = true),
              @Result(property = "name", column = "name"),
@@ -19,12 +19,12 @@ public interface UserMapper {
     User getUserById(@Param("userId") Long userId);
         
     @Insert("INSERT INTO user(name, age) VALUES(#{name}, #{age})")
-    @Options(useGeneratedKeys = true, keyProperty = "user.userId")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     void saveUser(User user);
         
-    @Update("UPDATE user SET name=#{name}, age=#{age} WHERE user_id=#{userId}")
+    @Update("UPDATE user SET name=#{name}, age=#{age} WHERE id=#{id}")
     void updateUser(User user);
         
-    @Delete("DELETE FROM user WHERE user_id=#{userId}")
+    @Delete("DELETE FROM user WHERE id=#{userId}")
     void removeUser(@Param("userId") Long userId);
 }
