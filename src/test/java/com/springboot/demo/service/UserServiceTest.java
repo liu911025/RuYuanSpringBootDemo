@@ -23,12 +23,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
+/**
+ * 这个是说，会从最顶层的包结构开始招，com.zhss.springboot
+ * 找到一个标注了@SpringBootApplication注解的一个类，算是启动类
+ * 然后会执行这个启动类的main方法，就可以创建spring容器，给后面的单元测试提供完整的这个环境
+ *
+ */
 @SpringBootTest
 public class UserServiceTest {
 
     @Autowired
     private UserService userService;
 
+    /**
+     * 这里加了@MockBean的注解
+     * 就代表了说，这个UserDAO就不会用我们定义的那个userDAO了
+     * 这里会由spring boot整合mockito框架，然后创建一个实现了UserDAO接口的匿名实现类
+     * 然后将这个模拟出来实现了UserDAO接口的类的实例bean，放入spring容器中
+     * 替代我们自己的那个UserDAO
+     */
     @MockBean
     private UserDAO userDAO;
 
